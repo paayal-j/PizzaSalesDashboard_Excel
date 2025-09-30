@@ -1,6 +1,6 @@
 # PizzaSalesDashboard_Excel
 PIZZA SALES SQL QUERIES
-A. KPI’s
+# A. KPI’s
 1. Total Revenue:
 SELECT SUM(total_price) AS Total_Revenue FROM pizza_sales;
  <img width="183" height="84" alt="image" src="https://github.com/user-attachments/assets/688332c1-ffd9-4ed9-ba3f-d6576d01a27f" />
@@ -24,14 +24,14 @@ AS Avg_Pizzas_per_order
 FROM pizza_sales
  <img width="208" height="90" alt="image" src="https://github.com/user-attachments/assets/17468fec-1f61-4786-bab6-68607cb1477b" />
 
-B. Daily Trend for Total Orders
+# B. Daily Trend for Total Orders
 SELECT DATENAME(DW, order_date) AS order_day, COUNT(DISTINCT order_id) AS total_orders 
 FROM pizza_sales
 GROUP BY DATENAME(DW, order_date)
 Output:
  <img width="235" height="208" alt="image" src="https://github.com/user-attachments/assets/6730a3e0-144f-4e6d-8106-d182f022d007" />
 
-C. Hourly Trend for Orders
+# C. Hourly Trend for Orders
 SELECT DATEPART(HOUR, order_time) as order_hours, COUNT(DISTINCT order_id) as total_orders
 from pizza_sales
 group by DATEPART(HOUR, order_time)
@@ -39,7 +39,7 @@ order by DATEPART(HOUR, order_time)
 Output
  <img width="265" height="371" alt="image" src="https://github.com/user-attachments/assets/660def87-101d-4a4c-afad-cdf62006fbc9" />
 
-D. % of Sales by Pizza Category
+# D. % of Sales by Pizza Category
 SELECT pizza_category, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
 CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
 FROM pizza_sales
@@ -47,7 +47,7 @@ GROUP BY pizza_category
 Output
  <img width="385" height="176" alt="image" src="https://github.com/user-attachments/assets/2dcd7020-9d43-48d4-b479-4b922db5b52b" />
 
-E. % of Sales by Pizza Size
+# E. % of Sales by Pizza Size
 SELECT pizza_size, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
 CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
 FROM pizza_sales
@@ -57,7 +57,7 @@ Output
  <img width="351" height="203" alt="image" src="https://github.com/user-attachments/assets/963d0bf0-9772-4ead-90bb-ce9d11fa22b2" />
 
 
-F. Total Pizzas Sold by Pizza Category
+# F. Total Pizzas Sold by Pizza Category
 SELECT pizza_category, SUM(quantity) as Total_Quantity_Sold
 FROM pizza_sales
 WHERE MONTH(order_date) = 2
@@ -66,7 +66,7 @@ ORDER BY Total_Quantity_Sold DESC
 Output
  <img width="362" height="174" alt="image" src="https://github.com/user-attachments/assets/be78358b-5f54-4416-8700-c4157e185885" />
 
-G. Top 5 Best Sellers by Total Pizzas Sold
+# G. Top 5 Best Sellers by Total Pizzas Sold
 SELECT Top 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
 FROM pizza_sales
 GROUP BY pizza_name
@@ -78,7 +78,7 @@ Output
 
 
 
-H. Bottom 5 Best Sellers by Total Pizzas Sold
+# H. Bottom 5 Best Sellers by Total Pizzas Sold
 SELECT TOP 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
 FROM pizza_sales
 GROUP BY pizza_name
