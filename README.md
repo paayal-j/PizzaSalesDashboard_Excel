@@ -28,7 +28,9 @@ FROM pizza_sales
 SELECT DATENAME(DW, order_date) AS order_day, COUNT(DISTINCT order_id) AS total_orders 
 FROM pizza_sales
 GROUP BY DATENAME(DW, order_date)
+
 Output:
+
  <img width="235" height="208" alt="image" src="https://github.com/user-attachments/assets/6730a3e0-144f-4e6d-8106-d182f022d007" />
 
 # C. Hourly Trend for Orders
@@ -36,7 +38,9 @@ SELECT DATEPART(HOUR, order_time) as order_hours, COUNT(DISTINCT order_id) as to
 from pizza_sales
 group by DATEPART(HOUR, order_time)
 order by DATEPART(HOUR, order_time)
+
 Output
+
  <img width="265" height="371" alt="image" src="https://github.com/user-attachments/assets/660def87-101d-4a4c-afad-cdf62006fbc9" />
 
 # D. % of Sales by Pizza Category
@@ -44,7 +48,9 @@ SELECT pizza_category, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
 CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
 FROM pizza_sales
 GROUP BY pizza_category
+
 Output
+
  <img width="385" height="176" alt="image" src="https://github.com/user-attachments/assets/2dcd7020-9d43-48d4-b479-4b922db5b52b" />
 
 # E. % of Sales by Pizza Size
@@ -53,7 +59,9 @@ CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECI
 FROM pizza_sales
 GROUP BY pizza_size
 ORDER BY pizza_size
+
 Output
+
  <img width="351" height="203" alt="image" src="https://github.com/user-attachments/assets/963d0bf0-9772-4ead-90bb-ce9d11fa22b2" />
 
 
@@ -63,7 +71,9 @@ FROM pizza_sales
 WHERE MONTH(order_date) = 2
 GROUP BY pizza_category
 ORDER BY Total_Quantity_Sold DESC
+
 Output
+
  <img width="362" height="174" alt="image" src="https://github.com/user-attachments/assets/be78358b-5f54-4416-8700-c4157e185885" />
 
 # G. Top 5 Best Sellers by Total Pizzas Sold
@@ -71,7 +81,9 @@ SELECT Top 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
 FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY Total_Pizza_Sold DESC
+
 Output
+
  <img width="458" height="181" alt="image" src="https://github.com/user-attachments/assets/7bf3b84f-b1ea-4ab6-96bb-8980de431c75" />
 
 
@@ -83,7 +95,9 @@ SELECT TOP 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
 FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY Total_Pizza_Sold ASC
+
 Output
+
  <img width="427" height="195" alt="image" src="https://github.com/user-attachments/assets/03b3500a-3198-4fb2-9c7e-baed41d0c1fd" />
 
 
